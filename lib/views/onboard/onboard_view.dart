@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:online_courseapp/utilis/colors.dart';
+import 'package:online_courseapp/views/home/home_view.dart';
 
 class OnBoardView extends StatefulWidget {
   const OnBoardView({Key? key}) : super(key: key);
@@ -12,12 +13,6 @@ class OnBoardView extends StatefulWidget {
 
 class OnBoardViewState extends State<OnBoardView> {
   final introKey = GlobalKey<IntroductionScreenState>();
-
-  void _onIntroEnd(context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const HomePage()),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +89,13 @@ class OnBoardViewState extends State<OnBoardView> {
           decoration: pageDecoration,
         ),
       ],
-      onDone: () => _onIntroEnd(context),
+      onDone: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeView(),
+            ));
+      },
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       showSkipButton: false,
       skipOrBackFlex: 0,
@@ -138,18 +139,6 @@ class OnBoardViewState extends State<OnBoardView> {
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
     );
   }
 }
