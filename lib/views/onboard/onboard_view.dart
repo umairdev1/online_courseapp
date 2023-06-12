@@ -4,6 +4,8 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:online_courseapp/utilis/colors.dart';
 import 'package:online_courseapp/views/home/home_view.dart';
 
+import '../mainview/main_view.dart';
+
 class OnBoardView extends StatefulWidget {
   const OnBoardView({Key? key}) : super(key: key);
 
@@ -93,7 +95,7 @@ class OnBoardViewState extends State<OnBoardView> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeView(),
+              builder: (context) => MainView(),
             ));
       },
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
