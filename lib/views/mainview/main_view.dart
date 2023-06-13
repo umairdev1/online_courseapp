@@ -59,46 +59,80 @@ class _BottomNavigationBarExampleState
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kwhiteClr,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 0
-                ? const Icon(Icons.home)
-                : const Icon(Icons.home_outlined),
-            label: 'Home',
+      bottomNavigationBar: Stack(
+        children: [
+          BottomNavigationBar(
+            backgroundColor: kwhiteClr,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 0
+                    ? const Icon(Icons.home)
+                    : const Icon(Icons.home_outlined),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 1
+                    ? const Icon(Icons.school)
+                    : const Icon(Icons.school_outlined),
+                label: 'Business',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 2
+                    ? const Icon(Icons.calendar_today)
+                    : const Icon(Icons.calendar_today_outlined),
+                label: 'School',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 3
+                    ? const Icon(Icons.mail)
+                    : const Icon(Icons.mail_outline),
+                label: 'School',
+              ),
+              BottomNavigationBarItem(
+                icon: _selectedIndex == 4
+                    ? const Icon(Icons.person)
+                    : const Icon(Icons.person_4_outlined),
+                label: 'School',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: kprimaryClr,
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 1
-                ? const Icon(Icons.school)
-                : const Icon(Icons.school_outlined),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 2
-                ? const Icon(Icons.calendar_today)
-                : const Icon(Icons.calendar_today_outlined),
-            label: 'School',
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 3
-                ? const Icon(Icons.mail)
-                : const Icon(Icons.mail_outline),
-            label: 'School',
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 4
-                ? const Icon(Icons.person)
-                : const Icon(Icons.person_4_outlined),
-            label: 'School',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                width: 40,
+                height: 2,
+                color: _selectedIndex == 0 ? kprimaryClr : Colors.transparent,
+              ),
+              Container(
+                width: 40,
+                height: 2,
+                color: _selectedIndex == 1 ? kprimaryClr : Colors.transparent,
+              ),
+              Container(
+                width: 40,
+                height: 2,
+                color: _selectedIndex == 2 ? kprimaryClr : Colors.transparent,
+              ),
+              Container(
+                width: 40,
+                height: 2,
+                color: _selectedIndex == 3 ? kprimaryClr : Colors.transparent,
+              ),
+              Container(
+                width: 40,
+                height: 2,
+                color: _selectedIndex == 4 ? kprimaryClr : Colors.transparent,
+              ),
+            ],
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: kprimaryClr,
-        onTap: _onItemTapped,
       ),
     );
   }
